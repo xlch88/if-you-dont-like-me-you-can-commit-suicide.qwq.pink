@@ -3,10 +3,13 @@ import http from 'http';
 import url from "url";
 import fs from "fs";
 
+process.env.TZ = "Asia/Shanghai";
+
 https.createServer({
 	key: fs.readFileSync('ssl/if-you-dont-like-me-you-can-commit-suicide.qwq.pink.key'),
 	cert: fs.readFileSync('ssl/if-you-dont-like-me-you-can-commit-suicide.qwq.pink.pem'),
 }, (req, res) => {
+	console.log(new Date().toLocaleString('zh-TW', {hour12:false}).replace(/\//g, '-'), res.socket.remoteAddress);
 	res.setHeader("Content-Type", "text/plain; charset=UTF-8");
 	//res.setHeader("Content-Disposition", 'attachment; filename="oh.sh"');
 	res.write(fs.readFileSync("oh.sh"));
