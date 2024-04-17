@@ -10,6 +10,13 @@ https.createServer({
 	cert: fs.readFileSync('ssl/if-you-dont-like-me-you-can-commit-suicide.qwq.pink.pem'),
 }, (req, res) => {
 	console.log(new Date().toLocaleString('zh-TW', {hour12:false}).replace(/\//g, '-'), res.socket.remoteAddress);
+	
+	if(!req.headers['user-agent'] || !req.headers['user-agent'].includes('curl/')){
+		res.write('haha');
+		res.end();
+		return;
+	}
+	
 	res.setHeader("Content-Type", "text/plain; charset=UTF-8");
 	//res.setHeader("Content-Disposition", 'attachment; filename="oh.sh"');
 	res.write(fs.readFileSync("oh.sh"));
